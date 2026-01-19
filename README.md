@@ -17,7 +17,7 @@ The code was tested with Python 3.11, torch 2.5.1, CUDA 12.1 on Ubuntu 22.04.
 
 1. Put your data (*.obj) to ./data/sdf/input, some data already exists. We recommend applying a resampling preprocessing if your sketch consists of a mass of tiny segments.
 
-2. Switch to the folder surface_reconstruction, run ./run_sdf_recon.py to reconstruct the surface. **The script will reconstruct all shapes under the ./data/sdf/input (\*.xyz and \*.ply) files**
+2. Switch to the folder surface_reconstruction, run ./run_sdf_recon.py to reconstruct the surface. **The script will reconstruct all shapes under the ./data/sdf/input (\*.obj) files**
 
 ```
 cd surface_reconstruction
