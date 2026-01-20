@@ -8,7 +8,7 @@ Code of Variational Neural Surfacing of 3D Sketches. ACM Transactions on Graphic
 
 ### 1. Requirements
 
-Our cod uses [PyTorch](https://pytorch.org/).
+Our code uses [PyTorch](https://pytorch.org/).
 
 The code was tested with Python 3.11, torch 2.5.1, CUDA 12.1 on Ubuntu 22.04.
 
