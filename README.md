@@ -24,7 +24,7 @@ cd surface_reconstruction
 python run_sdf_recon.py
 ```
 
-**Results mesh are saved in ./surface_reconstruction/log/sdf/<object_name>/mesh**
+**Results mesh are saved in ./surface_reconstruction/log/sdf/object_name/mesh**
 
 
 
