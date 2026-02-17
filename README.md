@@ -37,7 +37,7 @@ Thanks to their impressive work.
 ### Bibtex
 
 ```bash
-@article{Zhang2025VariationalNS,
+@inproceedings{Zhang2025VariationalNS,
   title={Variational Neural Surfacing of 3D Sketches},
   author={Yutao Zhang and Stephanie Wang and Mikhail Bessmeltsev},
   journal={Proceedings of the SIGGRAPH Asia 2025 Conference Papers},
