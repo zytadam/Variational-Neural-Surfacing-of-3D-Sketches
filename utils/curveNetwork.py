@@ -51,19 +51,25 @@ class CurveNetwork():
         lines = []
 
         with open(file_path, 'r') as f:
-            line = f.readline().strip()
-            while line:
+            for raw_line in f:
+                line = raw_line.strip()
                 if line.startswith('v '):
                     verts.append(list(map(float, line.split()[1:])))
                 elif line.startswith('l '):
                     l = line.split()
                     idxs = list(map(int, l[1:3]))
                     lines.append(idxs)
-                line = f.readline().strip()
         
         self.verts = np.array(verts)
         self.lines = np.array(lines) - 1
         self.lens = np.linalg.norm(self.verts[self.lines[:, 1]] - self.verts[self.lines[:, 0]], axis=1)
+        # Filter out degenerate (zero/near-zero length) edges
+        keep = self.lens > 1e-12
+        if keep.sum() < len(keep):
+            n_removed = len(keep) - keep.sum()
+            print(f'Removed {n_removed} degenerate edges (length <= 1e-12)')
+            self.lines = self.lines[keep]
+            self.lens = self.lens[keep]
         self.tans = self.verts[self.lines[:, 1]] - self.verts[self.lines[:, 0]]
         self.tans /= self.lens[:, None]
 
@@ -71,13 +77,14 @@ class CurveNetwork():
 
     
     def fit_into_box(self, box_size=1, ratio=0.8):
-        center = self.verts.mean(axis=0)
-        
-        scale = np.abs(self.verts).max()
-        scale = 0.5 * 1/scale * box_size * ratio
+        center = 0.5 * (self.verts.min(axis=0) + self.verts.max(axis=0))
+        max_extent = (self.verts.max(axis=0) - self.verts.min(axis=0)).max()
+        if max_extent < 1e-12:
+            max_extent = 1.0
+
+        scale = box_size * ratio / max_extent
         trans = box_size / 2 - center * scale
 
-        self.verts = self.verts
         self.verts = self.verts * scale + trans
         self.lens = self.lens * scale
 
