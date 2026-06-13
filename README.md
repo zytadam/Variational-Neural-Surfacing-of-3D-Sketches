@@ -4,6 +4,13 @@ Code of Variational Neural Surfacing of 3D Sketches. ACM Transactions on Graphic
 
 [**Project Page**](https://zytadam.github.io/publications/vns/) &nbsp;/ [**Paper**](https://dl.acm.org/doi/10.1145/3757377.3763900)
 
+> [!IMPORTANT]
+> **Errata — Comparison results in NeuralSketch2Surf ([Ye et al., 2025](https://hal.science/hal-05615004/))**
+>
+> Due to a file format I/O bug, the comparison results for our method (VNS) in the above paper are incorrect — our actual results are significantly better. We apologize for the error. Their corrected paper with the correct comparison will be provided on the authors' website. Corrected results are available below.
+>
+> **[View corrected VNS results](https://zytadam.github.io/vns-results/)**
+
 ![RP](assets/RP.jpg)
 
 ### 1. Requirements
